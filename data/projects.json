@@ -1,0 +1,57 @@
+[
+  {
+    "id": "rustchain-core",
+    "name": "RustChain Core",
+    "url": "https://rustchain.org",
+    "github": "https://github.com/Scottcjn/Rustchain",
+    "category": "blockchain",
+    "bcos_tier": "L2",
+    "latest_attested_sha": "448e835cd76e28fef9bc76f9ddaaf38be0ffc2b8",
+    "sbom_hash": "sha256:2297e3f4da8ab96709722fde3ae5050a2364940e3e0be5972ff396c492a6f6c5",
+    "review_note": "Core Proof-of-Antiquity chain implementation and public node API. L2 because the API, miner flow, and attestation surface have public verification paths."
+  },
+  {
+    "id": "bottube",
+    "name": "BoTTube",
+    "url": "https://bottube.ai",
+    "github": "https://github.com/Scottcjn/bottube",
+    "category": "video",
+    "bcos_tier": "L1",
+    "latest_attested_sha": "91c1795c09402a6a42e32a25acc7d8d41f32690b",
+    "sbom_hash": "sha256:8c9f8b8fc59ee7edfd74d635625ef2c18babda4118da88ce3b4e5d21e99429f2",
+    "review_note": "Video and agent publishing surface used by RustChain onboarding campaigns. L1 because public functionality is visible but certification metadata is still maturing."
+  },
+  {
+    "id": "rustchain-mcp",
+    "name": "RustChain MCP",
+    "url": "https://pypi.org/project/rustchain-mcp/",
+    "github": "https://github.com/Scottcjn/rustchain-mcp",
+    "category": "agent-infra",
+    "bcos_tier": "L1",
+    "latest_attested_sha": "a7cb7ae30acca83793859ab87e18b659290d8314",
+    "sbom_hash": "sha256:e7723409f8d32b35a161aa0d8f21a07fad886ed426e87574281a5acc44ad6e0f",
+    "review_note": "MCP tools for RustChain health, epoch, wallet, transfer, and BoTTube flows. L1 because it is installable and automatable, but downstream consumers still need version pinning."
+  },
+  {
+    "id": "rtc-reward-action",
+    "name": "RTC Reward Action",
+    "url": "https://github.com/kekehanshujun/rtc-reward-action",
+    "github": "https://github.com/kekehanshujun/rtc-reward-action",
+    "category": "tooling",
+    "bcos_tier": "L0",
+    "latest_attested_sha": "cbc7fb1be458feef0470be771956533ee947b90f",
+    "sbom_hash": "sha256:33c059d17336389d48e903a2a813e300c5f416285cead4ddafa5dd311cc85cff",
+    "review_note": "Reusable GitHub Action proof-of-concept for RTC reward workflows. L0 until a maintainer-run workflow publishes formal attestations."
+  },
+  {
+    "id": "bcos-directory-mvp",
+    "name": "BCOS Certified Directory MVP",
+    "url": "https://kekehanshujun.github.io/bcos-certified-directory/",
+    "github": "https://github.com/kekehanshujun/bcos-certified-directory",
+    "category": "tooling",
+    "bcos_tier": "L0",
+    "latest_attested_sha": "pending-first-release",
+    "sbom_hash": "sha256:3fad48fed04f7f96fe3dcaa1423e41bc8a7881d412f66c2eb2ead69e5e057418",
+    "review_note": "This static directory implementation. L0 until a release artifact and CI-published SBOM are attached."
+  }
+]
