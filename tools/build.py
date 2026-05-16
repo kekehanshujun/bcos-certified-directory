@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data" / "projects.json"
 DIST = ROOT / "dist"
 OUT = DIST / "index.html"
+DOCS = ROOT / "docs"
+DOCS_OUT = DOCS / "index.html"
 
 TIERS = {"L0", "L1", "L2"}
 CATEGORIES = {"agent-infra", "video", "blockchain", "compute-rentals", "tooling"}
@@ -224,9 +226,13 @@ def build(projects: list[dict]) -> str:
 
 def main() -> None:
     projects = load_projects()
+    html_output = build(projects)
     DIST.mkdir(exist_ok=True)
-    OUT.write_text(build(projects), encoding="utf-8")
+    DOCS.mkdir(exist_ok=True)
+    OUT.write_text(html_output, encoding="utf-8")
+    DOCS_OUT.write_text(html_output, encoding="utf-8")
     print(f"wrote {OUT.relative_to(ROOT)} for {len(projects)} projects")
+    print(f"wrote {DOCS_OUT.relative_to(ROOT)} as GitHub Pages mirror")
 
 
 if __name__ == "__main__":
