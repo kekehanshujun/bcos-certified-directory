@@ -18,7 +18,10 @@ The build writes:
 
 ```text
 dist/index.html
+docs/index.html
 ```
+
+`dist/` is the required bounty build output. `docs/` is a deployment mirror because GitHub Pages branch publishing supports `/docs` but not `/dist`.
 
 ## Add A Project
 
