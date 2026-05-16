@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BCOS Certified Directory</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f6f8fb;
+      color: #172033;
+    }
+    body { margin: 0; }
+    header {
+      background: #122033;
+      color: #f8fafc;
+      padding: 28px clamp(18px, 4vw, 48px);
+      border-bottom: 4px solid #38bdf8;
+    }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 46px); letter-spacing: 0; }
+    header p { margin: 8px 0 0; color: #cbd5e1; max-width: 860px; }
+    main { max-width: 1220px; margin: 0 auto; padding: 22px clamp(16px, 3vw, 34px) 56px; }
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 180px 220px;
+      gap: 12px;
+      align-items: end;
+      margin: 18px 0;
+    }
+    label { display: grid; gap: 6px; font-size: 13px; font-weight: 700; color: #475569; }
+    input, select {
+      height: 40px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 0 12px;
+      font: inherit;
+      background: white;
+      color: #0f172a;
+    }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 18px 0 20px; }
+    .stat { background: white; border: 1px solid #d8e0ea; border-radius: 8px; padding: 14px; }
+    .stat b { display: block; font-size: 26px; }
+    .stat span { color: #64748b; font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 14px; }
+    .project { background: white; border: 1px solid #d8e0ea; border-radius: 8px; padding: 16px; }
+    .project[hidden] { display: none; }
+    .project-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+    h2 { margin: 0; font-size: 22px; letter-spacing: 0; }
+    .category { margin: 4px 0 0; color: #64748b; font-size: 13px; }
+    .tier { border-radius: 999px; padding: 5px 10px; font-weight: 800; font-size: 13px; }
+    .tier-l0 { background: #e2e8f0; color: #334155; }
+    .tier-l1 { background: #dbeafe; color: #1d4ed8; }
+    .tier-l2 { background: #dcfce7; color: #15803d; }
+    dl { display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 8px 12px; margin: 16px 0; }
+    dt { color: #64748b; font-weight: 700; font-size: 13px; }
+    dd { margin: 0; overflow-wrap: anywhere; }
+    code, pre { background: #f1f5f9; border: 1px solid #d8e0ea; border-radius: 6px; }
+    code { padding: 2px 5px; }
+    pre { padding: 10px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; color: #334155; }
+    a { color: #0f69a7; }
+    .badge-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    button { height: 34px; border: 1px solid #94a3b8; background: #f8fafc; border-radius: 6px; cursor: pointer; }
+    @media (max-width: 780px) {
+      .toolbar, .stats { grid-template-columns: 1fr; }
+      dl { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BCOS Certified Directory</h1>
+    <p>Browse certified projects with trust metadata upfront: tier, attested commit, SBOM hash, and a short human/agent review note.</p>
+  </header>
+  <main>
+    <section class="stats" aria-label="Directory stats">
+      <div class="stat"><b>5</b><span>Total projects</span></div>
+      <div class="stat"><b>1</b><span>L2 certified</span></div>
+      <div class="stat"><b>2</b><span>L1 verified</span></div>
+      <div class="stat"><b>2</b><span>L0 tracked</span></div>
+    </section>
+    <section class="toolbar" aria-label="Search and filters">
+      <label>Search<input id="search" type="search" placeholder="Project, repo, note, category"></label>
+      <label>Tier<select id="tier"><option value="">All tiers</option><option value="L0">L0</option>
+<option value="L1">L1</option>
+<option value="L2">L2</option></select></label>
+      <label>Category<select id="category"><option value="">All categories</option><option value="agent-infra">agent-infra</option>
+<option value="blockchain">blockchain</option>
+<option value="compute-rentals">compute-rentals</option>
+<option value="tooling">tooling</option>
+<option value="video">video</option></select></label>
+    </section>
+    <section id="projects" class="grid">
+    <article class="project" data-tier="L2" data-category="blockchain" data-search="rustchain core https://rustchain.org https://github.com/scottcjn/rustchain blockchain l2 core proof-of-antiquity chain implementation and public node api. l2 because the api, miner flow, and attestation surface have public verification paths.">
+      <div class="project-head">
+        <div>
+          <h2>RustChain Core</h2>
+          <p class="category">blockchain</p>
+        </div>
+        <span class="tier tier-l2">L2</span>
+      </div>
+      <dl>
+        <dt>Project URL</dt><dd><a href="https://rustchain.org">https://rustchain.org</a></dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/Scottcjn/Rustchain">https://github.com/Scottcjn/Rustchain</a></dd>
+        <dt>Latest SHA</dt><dd><code>448e835cd76e28fef9bc76f9ddaaf38be0ffc2b8</code></dd>
+        <dt>SBOM Hash</dt><dd><code>sha256:2297e3f4da8ab96709722fde3ae5050a2364940e3e0be5972ff396c492a6f6c5</code></dd>
+        <dt>Review Note</dt><dd>Core Proof-of-Antiquity chain implementation and public node API. L2 because the API, miner flow, and attestation surface have public verification paths.</dd>
+      </dl>
+      <div class="badge-row">
+        <img src="https://img.shields.io/badge/BCOS-L2-rustchain-core-16a34a?style=flat-square" alt="RustChain Core BCOS badge">
+        <button type="button" data-copy="![RustChain Core BCOS badge](https://img.shields.io/badge/BCOS-L2-rustchain-core-16a34a?style=flat-square)">Copy badge</button>
+      </div>
+      <pre>![RustChain Core BCOS badge](https://img.shields.io/badge/BCOS-L2-rustchain-core-16a34a?style=flat-square)</pre>
+    </article>
+    
+
+    <article class="project" data-tier="L1" data-category="video" data-search="bottube https://bottube.ai https://github.com/scottcjn/bottube video l1 video and agent publishing surface used by rustchain onboarding campaigns. l1 because public functionality is visible but certification metadata is still maturing.">
+      <div class="project-head">
+        <div>
+          <h2>BoTTube</h2>
+          <p class="category">video</p>
+        </div>
+        <span class="tier tier-l1">L1</span>
+      </div>
+      <dl>
+        <dt>Project URL</dt><dd><a href="https://bottube.ai">https://bottube.ai</a></dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/Scottcjn/bottube">https://github.com/Scottcjn/bottube</a></dd>
+        <dt>Latest SHA</dt><dd><code>91c1795c09402a6a42e32a25acc7d8d41f32690b</code></dd>
+        <dt>SBOM Hash</dt><dd><code>sha256:8c9f8b8fc59ee7edfd74d635625ef2c18babda4118da88ce3b4e5d21e99429f2</code></dd>
+        <dt>Review Note</dt><dd>Video and agent publishing surface used by RustChain onboarding campaigns. L1 because public functionality is visible but certification metadata is still maturing.</dd>
+      </dl>
+      <div class="badge-row">
+        <img src="https://img.shields.io/badge/BCOS-L1-bottube-2563eb?style=flat-square" alt="BoTTube BCOS badge">
+        <button type="button" data-copy="![BoTTube BCOS badge](https://img.shields.io/badge/BCOS-L1-bottube-2563eb?style=flat-square)">Copy badge</button>
+      </div>
+      <pre>![BoTTube BCOS badge](https://img.shields.io/badge/BCOS-L1-bottube-2563eb?style=flat-square)</pre>
+    </article>
+    
+
+    <article class="project" data-tier="L1" data-category="agent-infra" data-search="rustchain mcp https://pypi.org/project/rustchain-mcp/ https://github.com/scottcjn/rustchain-mcp agent-infra l1 mcp tools for rustchain health, epoch, wallet, transfer, and bottube flows. l1 because it is installable and automatable, but downstream consumers still need version pinning.">
+      <div class="project-head">
+        <div>
+          <h2>RustChain MCP</h2>
+          <p class="category">agent-infra</p>
+        </div>
+        <span class="tier tier-l1">L1</span>
+      </div>
+      <dl>
+        <dt>Project URL</dt><dd><a href="https://pypi.org/project/rustchain-mcp/">https://pypi.org/project/rustchain-mcp/</a></dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/Scottcjn/rustchain-mcp">https://github.com/Scottcjn/rustchain-mcp</a></dd>
+        <dt>Latest SHA</dt><dd><code>a7cb7ae30acca83793859ab87e18b659290d8314</code></dd>
+        <dt>SBOM Hash</dt><dd><code>sha256:e7723409f8d32b35a161aa0d8f21a07fad886ed426e87574281a5acc44ad6e0f</code></dd>
+        <dt>Review Note</dt><dd>MCP tools for RustChain health, epoch, wallet, transfer, and BoTTube flows. L1 because it is installable and automatable, but downstream consumers still need version pinning.</dd>
+      </dl>
+      <div class="badge-row">
+        <img src="https://img.shields.io/badge/BCOS-L1-rustchain-mcp-2563eb?style=flat-square" alt="RustChain MCP BCOS badge">
+        <button type="button" data-copy="![RustChain MCP BCOS badge](https://img.shields.io/badge/BCOS-L1-rustchain-mcp-2563eb?style=flat-square)">Copy badge</button>
+      </div>
+      <pre>![RustChain MCP BCOS badge](https://img.shields.io/badge/BCOS-L1-rustchain-mcp-2563eb?style=flat-square)</pre>
+    </article>
+    
+
+    <article class="project" data-tier="L0" data-category="tooling" data-search="rtc reward action https://github.com/kekehanshujun/rtc-reward-action https://github.com/kekehanshujun/rtc-reward-action tooling l0 reusable github action proof-of-concept for rtc reward workflows. l0 until a maintainer-run workflow publishes formal attestations.">
+      <div class="project-head">
+        <div>
+          <h2>RTC Reward Action</h2>
+          <p class="category">tooling</p>
+        </div>
+        <span class="tier tier-l0">L0</span>
+      </div>
+      <dl>
+        <dt>Project URL</dt><dd><a href="https://github.com/kekehanshujun/rtc-reward-action">https://github.com/kekehanshujun/rtc-reward-action</a></dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/kekehanshujun/rtc-reward-action">https://github.com/kekehanshujun/rtc-reward-action</a></dd>
+        <dt>Latest SHA</dt><dd><code>cbc7fb1be458feef0470be771956533ee947b90f</code></dd>
+        <dt>SBOM Hash</dt><dd><code>sha256:33c059d17336389d48e903a2a813e300c5f416285cead4ddafa5dd311cc85cff</code></dd>
+        <dt>Review Note</dt><dd>Reusable GitHub Action proof-of-concept for RTC reward workflows. L0 until a maintainer-run workflow publishes formal attestations.</dd>
+      </dl>
+      <div class="badge-row">
+        <img src="https://img.shields.io/badge/BCOS-L0-rtc-reward-action-64748b?style=flat-square" alt="RTC Reward Action BCOS badge">
+        <button type="button" data-copy="![RTC Reward Action BCOS badge](https://img.shields.io/badge/BCOS-L0-rtc-reward-action-64748b?style=flat-square)">Copy badge</button>
+      </div>
+      <pre>![RTC Reward Action BCOS badge](https://img.shields.io/badge/BCOS-L0-rtc-reward-action-64748b?style=flat-square)</pre>
+    </article>
+    
+
+    <article class="project" data-tier="L0" data-category="tooling" data-search="bcos certified directory mvp https://kekehanshujun.github.io/bcos-certified-directory/ https://github.com/kekehanshujun/bcos-certified-directory tooling l0 this static directory implementation. l0 until a release artifact and ci-published sbom are attached.">
+      <div class="project-head">
+        <div>
+          <h2>BCOS Certified Directory MVP</h2>
+          <p class="category">tooling</p>
+        </div>
+        <span class="tier tier-l0">L0</span>
+      </div>
+      <dl>
+        <dt>Project URL</dt><dd><a href="https://kekehanshujun.github.io/bcos-certified-directory/">https://kekehanshujun.github.io/bcos-certified-directory/</a></dd>
+        <dt>GitHub</dt><dd><a href="https://github.com/kekehanshujun/bcos-certified-directory">https://github.com/kekehanshujun/bcos-certified-directory</a></dd>
+        <dt>Latest SHA</dt><dd><code>pending-first-release</code></dd>
+        <dt>SBOM Hash</dt><dd><code>sha256:3fad48fed04f7f96fe3dcaa1423e41bc8a7881d412f66c2eb2ead69e5e057418</code></dd>
+        <dt>Review Note</dt><dd>This static directory implementation. L0 until a release artifact and CI-published SBOM are attached.</dd>
+      </dl>
+      <div class="badge-row">
+        <img src="https://img.shields.io/badge/BCOS-L0-bcos-directory-mvp-64748b?style=flat-square" alt="BCOS Certified Directory MVP BCOS badge">
+        <button type="button" data-copy="![BCOS Certified Directory MVP BCOS badge](https://img.shields.io/badge/BCOS-L0-bcos-directory-mvp-64748b?style=flat-square)">Copy badge</button>
+      </div>
+      <pre>![BCOS Certified Directory MVP BCOS badge](https://img.shields.io/badge/BCOS-L0-bcos-directory-mvp-64748b?style=flat-square)</pre>
+    </article>
+    </section>
+  </main>
+  <script>
+    const search = document.querySelector("#search");
+    const tier = document.querySelector("#tier");
+    const category = document.querySelector("#category");
+    const cards = [...document.querySelectorAll(".project")];
+    function applyFilters() {
+      const q = search.value.trim().toLowerCase();
+      const wantedTier = tier.value;
+      const wantedCategory = category.value;
+      for (const card of cards) {
+        const matchSearch = !q || card.dataset.search.includes(q);
+        const matchTier = !wantedTier || card.dataset.tier === wantedTier;
+        const matchCategory = !wantedCategory || card.dataset.category === wantedCategory;
+        card.hidden = !(matchSearch && matchTier && matchCategory);
+      }
+    }
+    search.addEventListener("input", applyFilters);
+    tier.addEventListener("change", applyFilters);
+    category.addEventListener("change", applyFilters);
+    document.addEventListener("click", async event => {
+      const button = event.target.closest("button[data-copy]");
+      if (!button) return;
+      await navigator.clipboard.writeText(button.dataset.copy);
+      const old = button.textContent;
+      button.textContent = "Copied";
+      setTimeout(() => button.textContent = old, 1000);
+    });
+  </script>
+</body>
+</html>
